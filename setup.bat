@@ -30,13 +30,15 @@ call .venv\Scripts\activate.bat
 echo Creating launcher script...
 (
     echo Set WS = CreateObject^("WScript.Shell"^)
-    echo WS.CurrentDirectory = "%CD%"
-    echo WS.Run """%CD%\.venv\Scripts\python.exe"" ""%CD%\main.py""", 0, False
+    echo Set FSO = CreateObject^("Scripting.FileSystemObject"^)
+    echo strScriptPath = FSO.GetParentFolderName^(WScript.ScriptFullName^)
+    echo WS.CurrentDirectory = strScriptPath
+    echo WS.Run """" ^& strScriptPath ^& "\.venv\Scripts\python.exe"" """ ^& strScriptPath ^& "\main.py""", 0, False
 ) > vimouse.vbs
 
 :: Create shortcuts using PowerShell
 echo Creating shortcuts...
-powershell -ExecutionPolicy Bypass -Command "$desktop = [Environment]::GetFolderPath('Desktop'); $startup = (New-Object -ComObject WScript.Shell).SpecialFolders('Startup'); $proj = '%CD%'; $vbs = Join-Path $proj 'vimouse.vbs'; $icon = Join-Path $proj 'icon_256x256.ico'; foreach ($path in @($desktop, $startup)) { $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut([IO.Path]::Combine($path, 'ViMouse.lnk')); $shortcut.TargetPath = 'wscript.exe'; $shortcut.Arguments = $vbs; $shortcut.WorkingDirectory = $proj; $shortcut.IconLocation = $icon; $shortcut.Save(); }"
+powershell -ExecutionPolicy Bypass -Command "$desktop = [Environment]::GetFolderPath('Desktop'); $startup = (New-Object -ComObject WScript.Shell).SpecialFolders('Startup'); $proj = '%CD%'; $vbs = Join-Path $proj 'vimouse.vbs'; $icon = Join-Path $proj 'icon_256x256.ico'; foreach ($path in @($desktop, $startup)) { $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut([IO.Path]::Combine($path, 'ViMouse.lnk')); $shortcut.TargetPath = 'C:\Windows\System32\wscript.exe'; $shortcut.Arguments = '""' + $vbs + '""'; $shortcut.WorkingDirectory = $proj; $shortcut.IconLocation = $icon; $shortcut.Save(); }"
 
 echo.
 echo Installation completed!
