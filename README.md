@@ -1,101 +1,73 @@
 # ViMouse for Windows
 
-A Vim-style mouse control application using keyboard shortcuts for Windows.
+A simple utility for Windows that provides Vim-style, keyboard-based mouse control.
 
-> This is a Windows-specific implementation inspired by [garywill/vimouse](https://github.com/garywill/vimouse). While the original project was created for Linux, I decided to create something similar for Windows users. Special thanks to @garywill for the original idea and implementation!
+![Vimouse Demo Screenshot or GIF](demo.png)
 
-## Requirements
+This project was inspired by [garywill/vimouse](https://github.com/garywill/vimouse) for Linux. I created this version to solve my own need for a similar tool on Windows.
 
-- Windows 10 or higher
-- Python 3.9+
+## Project Status
 
-## Installation
+**This is a completed personal project and is no longer in active development.**
 
-### Automatic Installation (Recommended)
+It was written to solve a specific problem and served its purpose well. The code is a "workbench prototype" — it's not perfectly clean, but **it works**.
 
-1. Download and extract the archive or clone the repository:
-```bash
-git clone https://github.com/slaid098/vimouse_win32.git
-cd vimouse_win32
-```
+## Features
 
-2. Run `setup.bat`
+-   **Keyboard-driven mouse control:** Click anywhere on the screen without touching the mouse.
+-   **Grid-based targeting:** Use two-letter coordinates for precise clicks.
+-   **Scroll simulation:** Scroll up and down with simple hotkeys.
 
-The installer will automatically:
-- Check for Python installation
-- Install all required dependencies using uv
-- Create a desktop shortcut
-- Add the application to Windows startup
+### Default Hotkeys
 
-### Manual Installation
+| Key Combination | Action                   |
+| :-------------- | :----------------------- |
+| <kbd>Alt</kbd>+<kbd>&#92;</kbd> | Toggle targeting overlay |
+| <kbd>Alt</kbd>+<kbd>K</kbd>     | Scroll Up              |
+| <kbd>Alt</kbd>+<kbd>J</kbd>     | Scroll Down            |
+| <kbd>Alt</kbd>+<kbd>Q</kbd>     | Exit Application       |
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/vimouse_win32.git
-cd vimouse_win32
-```
+## Installation & Usage
 
-2. Create and activate a virtual environment:
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
+There are two ways to run this application:
 
-3. Install uv:
-```bash
-pip install uv
-```
+### For Users (Recommended)
+This method uses a simple script to set everything up for you.
 
-4. Install dependencies:
-```bash
-uv pip install -e .
-```
+**Prerequisites:**
+-   Windows 10 or higher
+-   Python 3.9+ (must be in your system's PATH)
+-   `uv` installed
 
-5. To run:
-```bash
-python main.py
-```
+**Steps:**
+1.  Download and unzip the source code.
+2.  Run `setup.bat`.
 
-## Usage
+The script will install dependencies and create shortcuts for your desktop and Windows startup.
 
-After installation, the application will:
-- Start automatically with Windows
-- Be accessible via desktop shortcut
+### For Developers
+This method is for running directly from source using [uv](https://github.com/astral-sh/uv).
 
-### Keyboard Shortcuts
+**Prerequisites:**
+-   Python 3.9+
+-   `uv` installed
 
-[Describe your application's main keyboard shortcuts here]
+**Steps:**
+1.  **Clone:** `git clone https://github.com/slaid098/vimouse_win32 && cd vimouse_win32`
+2.  **Sync:** `uv sync`
+3.  **Run:** `uv run python main.py`
+
 
 ## Uninstallation
-
-1. Remove the desktop shortcut
-2. Remove the startup shortcut (`%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\ViMouse.lnk`)
-3. Delete the application folder
-
-## Development
-
-For development:
-
-1. Clone the repository
-2. Create a virtual environment:
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-3. Install development dependencies:
-```bash
-uv pip install -e ".[dev]"
-```
-
-## Contributing
-
-Contributions are welcome! Feel free to submit issues and pull requests.
+If you used `setup.bat`, you can uninstall by:
+1.  Removing the desktop shortcut.
+2.  Removing the startup shortcut (`%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\ViMouse.lnk`).
+3.  Deleting the application folder.
 
 ## License
 
-Copyright (c) 2024 Sergey (slaid098)
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+Like the original project, this license ensures that any improvements to this tool remain free and open for the entire community.
 
-Like the original [garywill/vimouse](https://github.com/garywill/vimouse) project, we use GPL-3.0 to ensure that all modifications and improvements remain open source and available to the community. 
+Copyright (c) 2024 slaid098
