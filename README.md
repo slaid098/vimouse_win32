@@ -55,7 +55,7 @@ This method is for running directly from source using [uv](https://github.com/as
 **Steps:**
 1.  **Clone:** `git clone https://github.com/slaid098/vimouse_win32 && cd vimouse_win32`
 2.  **Sync:** `uv sync`
-3.  **Run:** `uv run python main.py`
+3.  **Run:** `uv run main.py`
 
 
 ## Uninstallation
